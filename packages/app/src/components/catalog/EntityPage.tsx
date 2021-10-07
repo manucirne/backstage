@@ -224,6 +224,17 @@ const cicdCard = (
   </EntitySwitch>
 );
 
+const jenkins = (
+  <EntitySwitch>
+    <EntitySwitch.Case if={isJenkinsAvailable}>
+      <Grid item sm={6}>
+        <EntityLatestJenkinsRunCard branch="master" variant="gridItem" />
+        <EntityJenkinsContent />
+      </Grid>
+    </EntitySwitch.Case>
+  </EntitySwitch>
+);
+
 const entityWarningContent = (
   <>
     <EntitySwitch>
@@ -321,6 +332,10 @@ const serviceEntityPage = (
       {overviewContent}
     </EntityLayout.Route>
 
+    <EntityLayout.Route path="/jenkins" title="Jenkins">
+      <EntityJenkinsContent />
+    </EntityLayout.Route>
+
     <EntityLayout.Route path="/ci-cd" title="CI/CD">
       {cicdContent}
     </EntityLayout.Route>
@@ -397,6 +412,10 @@ const websiteEntityPage = (
 
     <EntityLayout.Route path="/errors" title="Errors">
       {errorsContent}
+    </EntityLayout.Route>
+
+    <EntityLayout.Route path="/jenkins" title="Jenkins">
+      {jenkins}
     </EntityLayout.Route>
 
     <EntityLayout.Route path="/dependencies" title="Dependencies">
